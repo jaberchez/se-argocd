@@ -1,0 +1,24 @@
+# ArgoCD with HA, OpenShift OAuth, Grafana, Prometheus and Routes
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd
+  labels:
+    app: argocd
+  namespace: argocd
+spec:
+  server:
+    route:
+      enabled: true
+  grafana:
+    enabled: true
+    route:
+      enabled: true
+  prometheus:
+    enabled: true
+    route:
+      enabled: true
+  dex:
+    openShiftOAuth: true
+  ha:
+    enabled: true
